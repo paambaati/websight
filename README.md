@@ -38,24 +38,24 @@ docker run -ti websight <website>
 ## 🧩 Design
 
 ```
-                        +---------------------+                        
-                        |   Link Extractor    |                        
-                        | +-----------------+ |                        
-                        | |                 | |                        
-                        | |   URL Resolver  | |                        
-                        | |                 | |                        
-                        | +-----------------+ |                        
-+-----------------+     | +-----------------+ |     +-----------------+
-|                 |     | |                 | |     |                 |
-|     Crawler     +---->+ |     Fetcher     | +---->+     Sitemap     |
-|                 |     | |                 | |     |                 |
-+-----------------+     | +-----------------+ |     +-----------------+
-                        | +-----------------+ |                        
-                        | |                 | |                        
-                        | |     Parser      | |                        
-                        | |                 | |                        
-                        | +-----------------+ |                        
-                        +---------------------+                        
+                                            +---------------------+                        
+                                            |   Link Extractor    |                        
+                                            | +-----------------+ |                        
+                                            | |                 | |                        
+                                            | |   URL Resolver  | |                        
+                                            | |                 | |                        
+                                            | +-----------------+ |                        
+                    +-----------------+     | +-----------------+ |     +-----------------+
+                    |                 |     | |                 | |     |                 |
+                    |     Crawler     +---->+ |     Fetcher     | +---->+     Sitemap     |
+                    |                 |     | |                 | |     |                 |
+                    +-----------------+     | +-----------------+ |     +-----------------+
+                                            | +-----------------+ |                        
+                                            | |                 | |                        
+                                            | |     Parser      | |                        
+                                            | |                 | |                        
+                                            | +-----------------+ |                        
+                                            +---------------------+                        
 ```
 
 The `Crawler` class runs a fast non-deterministic fetch of all pages (via `LinkExtractor`) & the URLs in them recursively and saves them in `Sitemap`. When crawling is complete<sup id="a1">[[1]](#f1)</sup>, the sitemap is printed as a ASCII tree.

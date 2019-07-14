@@ -1,8 +1,10 @@
 # websight
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/170cf9f21bdb38fd63a1/test_coverage)](https://codeclimate.com/github/paambaati/websight/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/170cf9f21bdb38fd63a1/test_coverage)](https://codeclimate.com/github/paambaati/websight/test_coverage) ![WTFPL License](https://img.shields.io/badge/License-WTFPL-blue.svg)
 
 A simple crawler that fetches all pages in a given website and prints the links between them.
+
+![Screenshot](SCREENSHOT.png)
 
 <small> 📣 Note that this project was purpose-built for a coding challenge (see [problem statement](PROBLEM-STATEMENT.md)) and is not meant for production use (unless you aren't [web scale](http://www.mongodb-is-web-scale.com/) yet).</small>
 

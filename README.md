@@ -1,6 +1,6 @@
 # websight
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/170cf9f21bdb38fd63a1/maintainability)](https://codeclimate.com/github/paambaati/websight/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/170cf9f21bdb38fd63a1/test_coverage)](https://codeclimate.com/github/paambaati/websight/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/170cf9f21bdb38fd63a1/test_coverage)](https://codeclimate.com/github/paambaati/websight/test_coverage)
 
 A simple crawler that fetches all pages in a given website and prints the links between them.
 

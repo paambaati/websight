@@ -1,0 +1,16 @@
+{
+    "extension": [
+        ".ts"
+    ],
+    "exclude": [
+        "**/*.d.ts",
+        "coverage/",
+        "lib/",
+        "test/"
+    ],
+    "reporter": [
+        "text",
+        "lcov"
+    ],
+    "cache": false
+}

@@ -1,0 +1,55 @@
+{
+  "name": "websight",
+  "version": "1.0.0",
+  "description": "Crawler + sitemap generator for Monzo's coding challenge",
+  "main": "lib/index.js",
+  "repository": {
+    "url": "https://github.com/paambaati/websight",
+    "type": "git"
+  },
+  "author": "GP <me@httgp.com>",
+  "license": "WTFPL",
+  "private": true,
+  "scripts": {
+    "start": "node lib/index.js",
+    "debug": "run(){ LOG_LEVEL=debug ts-node src/index.ts \"$1\" | pino-pretty --colorize; }; run",
+    "build": "tsc",
+    "lint": "tslint --project './tsconfig.json' --format verbose",
+    "lint:test": "tslint --project './tsconfig.test.json' --config './tslint.test.json' --format verbose",
+    "test": "NODE_ENV=test LOG_LEVEL=silent tape -r ts-node/register test/*.test.ts",
+    "coverage": "rm -rf ./node_modules/.cache && rm -rf coverage/ && rm -rf .nyc_output/ && NODE_ENV=test LOG_LEVEL=silent nyc --require ts-node/register tape -r ts-node/register test/*.test.ts"
+  },
+  "engines": {
+    "node": ">=6.3.0"
+  },
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "dependencies": {
+    "agentkeepalive": "4.0.2",
+    "got": "9.6.0",
+    "htmlparser2": "3.10.1",
+    "pino": "5.12.6"
+  },
+  "devDependencies": {
+    "@types/got": "9.6.1",
+    "@types/htmlparser2": "3.10.1",
+    "@types/nock": "10.0.3",
+    "@types/node": "12.6.2",
+    "@types/pino": "5.8.8",
+    "@types/tape": "4.2.33",
+    "@types/test-console": "1.1.0",
+    "get-stream": "5.1.0",
+    "nock": "11.0.0-beta.20",
+    "nyc": "14.1.1",
+    "pino-pretty": "3.2.0",
+    "tape": "4.11.0",
+    "test-console": "1.1.0",
+    "to-readable-stream": "2.1.0",
+    "ts-node": "8.3.0",
+    "tslint": "5.18.0",
+    "tslint-config-airbnb": "5.11.1",
+    "typescript": "3.5.3"
+  }
+}

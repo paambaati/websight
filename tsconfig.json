@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "outDir": "./lib/",
+        "inlineSourceMap": false,
+        "noImplicitAny": false,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "alwaysStrict": false,
+        "strictFunctionTypes": true,
+        "strictPropertyInitialization": true,
+        "noImplicitUseStrict": true,
+        "preserveConstEnums": true,
+        "declaration": false,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es5",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "lib": [
+            "es2018",
+            "es2017"
+        ],
+        "types": [
+            "node"
+        ]
+    },
+    "include": [
+        "src/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

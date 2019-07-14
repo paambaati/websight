@@ -1,6 +1,6 @@
 # websight
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/170cf9f21bdb38fd63a1/test_coverage)](https://codeclimate.com/github/paambaati/websight/test_coverage) ![WTFPL License](https://img.shields.io/badge/License-WTFPL-blue.svg)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/170cf9f21bdb38fd63a1/test_coverage)](https://codeclimate.com/github/paambaati/websight/test_coverage) [![WTFPL License](https://img.shields.io/badge/License-WTFPL-blue.svg)](blob/master/LICENSE)
 
 A simple crawler that fetches all pages in a given website and prints the links between them.
 

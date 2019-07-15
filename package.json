@@ -41,7 +41,7 @@
     "@types/tape": "4.2.33",
     "@types/test-console": "1.1.0",
     "get-stream": "5.1.0",
-    "nock": "11.0.0-beta.20",
+    "nock": "11.0.0-beta.23",
     "nyc": "14.1.1",
     "pino-pretty": "3.2.0",
     "tape": "4.11.0",

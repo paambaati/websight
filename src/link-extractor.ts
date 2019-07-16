@@ -39,18 +39,17 @@ export default class LinkExtractor {
      */
     public async getLinks(): Promise<Links> {
         return new Promise(async (resolve, reject) => {
-            const urls: string[] = [];
+            const urls: Set<string> = new Set();
             const assets: Set<string> = new Set();
             const resolver = new URLResolver(this.url);
             const fetcher = new Fetcher(resolver.startingUrl);
             const htmlStream = await fetcher.getUrlResponse();
             // Attach event listeners first.
             htmlStream.on('error', err => {
-                const statusCode: number = err['statusCode'];
                 // Perhaps handle statusCode === 429 with rate-limiting?
                 logger.error('Error fetching HTML!', {
                     url: fetcher.url,
-                    statusCode,
+                    statusCode: err['statusCode'],
                     message: err.message,
                 });
                 return reject(err);
@@ -62,8 +61,8 @@ export default class LinkExtractor {
             });
             this.parser.on('link', link => {
                 const fullUrl = resolver.getAbsoluteUrl(link);
-                if (fullUrl !== resolver.startingUrl) { // Make sure the page doesn't add itself.
-                    urls.push(fullUrl);
+                if (fullUrl !== resolver.startingUrl && resolver.isURLInDomain(fullUrl)) {
+                    urls.add(fullUrl);
                 }
             });
             this.parser.on('asset', link => {
@@ -76,7 +75,7 @@ export default class LinkExtractor {
                 htmlStream.removeAllListeners();
                 this.parser.removeAllListeners();
                 return resolve({
-                    urls: new Set(resolver.filterUrlsByDomain(urls)),
+                    urls,
                     assets,
                 });
             });

@@ -41,12 +41,10 @@ export default class URLResolver {
     }
 
     /**
-     * Filters out URLs that do not belong to the domain from `startingUrl`
-     * @param urls - Array of URLs to filter.
+     * Checks if URL is part of the domain.
+     * @param url - URL to check.
      */
-    public filterUrlsByDomain(urls: string[]): string[] {
-        return urls.filter(url => {
-            return new URL(url).hostname === this.urlObject.hostname;
-        });
+    public isURLInDomain(url: string): boolean {
+        return new URL(url).hostname === this.urlObject.hostname;
     }
 }

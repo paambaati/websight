@@ -42,17 +42,18 @@ test('📍 URLResolver — getAbsoluteUrl() should resolve the full absolute URL
     t.end();
 });
 
-test('📍 URLResolver — filterUrlsByDomain() should filter out all non-domain URLs.', t => {
-    t.plan(1);
+test('📍 URLResolver — isURLInDomain() should filter out all non-domain URLs.', t => {
+    t.plan(5);
     const domain = 'https://example.com/';
-    const links = [
-        'https://example.com/1',
-        'https://example.com/test/lol',
-        'https://search.example.com/haha',
-        'https://github.com/',
-        'ftp://google.com',
-    ];
-    const ownUrls = new URLResolver(domain).filterUrlsByDomain(links);
-    t.equals(ownUrls.length, 2, 'should return only URLs from same domain.');
+    let input = 'https://example.com/1';
+    t.equals(new URLResolver(domain).isURLInDomain(input), true, 'should clear regular URLs.');
+    input = 'https://example.com/test/lol';
+    t.equals(new URLResolver(domain).isURLInDomain(input), true, 'should clear deep URLs.');
+    input = 'https://search.example.com/haha';
+    t.equals(new URLResolver(domain).isURLInDomain(input), false, 'should reject URLs from subdomain.');
+    input = 'https://github.com/';
+    t.equals(new URLResolver(domain).isURLInDomain(input), false, 'should reject URLs from a different domain.');
+    input = 'ftp://google.com';
+    t.equals(new URLResolver(domain).isURLInDomain(input), false, 'should reject different protocols.');
     t.end();
 });

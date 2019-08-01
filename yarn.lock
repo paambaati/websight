@@ -138,10 +138,10 @@
   dependencies:
     "@types/domhandler" "*"
 
-"@types/got@9.6.1":
-  version "9.6.1"
-  resolved "https://registry.yarnpkg.com/@types/got/-/got-9.6.1.tgz#2c0fac7660c3bf75d0956018e73c456edcb1b157"
-  integrity sha512-910qhgjC0nhbrNU55ItiTJYoIBin0Ej0h11bH50GmetA5FKZ3UeH/Kit7vDx2myA8WiJR06FvC4H7kchA912/A==
+"@types/got@9.6.5":
+  version "9.6.5"
+  resolved "https://registry.yarnpkg.com/@types/got/-/got-9.6.5.tgz#b951331420dec5161c10a1a91e6390990398b302"
+  integrity sha512-2A8Yxbi092KD6JM/WMA8tzcS79U94EXLP4wg9ry0brgZF7fQRIe69vwnA9cW6wsmkAx15a8SJ9bOxRyyeDtbmQ==
   dependencies:
     "@types/node" "*"
     "@types/tough-cookie" "*"

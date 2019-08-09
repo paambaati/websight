@@ -16,8 +16,8 @@
     "build": "tsc",
     "lint": "tslint --project './tsconfig.json' --format verbose",
     "lint:test": "tslint --project './tsconfig.test.json' --config './tslint.test.json' --format verbose",
-    "test": "NODE_ENV=test LOG_LEVEL=silent tape -r ts-node/register test/*.test.ts",
-    "coverage": "rm -rf ./node_modules/.cache && rm -rf coverage/ && rm -rf .nyc_output/ && NODE_ENV=test LOG_LEVEL=silent nyc --require ts-node/register tape -r ts-node/register test/*.test.ts"
+    "test": "NODE_ENV=test LOG_LEVEL=silent tape -r ts-node/register/transpile-only test/*.test.ts",
+    "coverage": "rm -rf ./node_modules/.cache && rm -rf coverage/ && rm -rf .nyc_output/ && NODE_ENV=test LOG_LEVEL=silent nyc tape -r ts-node/register/transpile-only test/*.test.ts"
   },
   "engines": {
     "node": ">=6.3.0"

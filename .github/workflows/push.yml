@@ -1,11 +1,5 @@
 name: 🕷 websight CI
-on:
-  pull_request:
-    branches:
-      - master
-  push:
-    branches:
-      - master
+on: [ push, pull_request ]
 jobs:
   test:
     strategy:

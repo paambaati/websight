@@ -14,7 +14,7 @@ action "Build" {
   args = "build"
 }
 
-action "Publish code coverage" {
+action "Test & publish code coverage" {
   uses = "paambaati/codeclimate-action@master"
   needs = ["Install dependencies", "Build"]
   env = {

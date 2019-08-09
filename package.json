@@ -12,7 +12,7 @@
   "private": true,
   "scripts": {
     "start": "node lib/index.js",
-    "debug": "run(){ LOG_LEVEL=debug ts-node src/index.ts \"$1\" | pino-pretty --colorize; }; run",
+    "debug": "run(){ LOG_LEVEL=debug ts-node -T src/index.ts \"$1\" | pino-pretty --colorize; }; run",
     "build": "tsc",
     "lint": "tslint --project './tsconfig.json' --format verbose",
     "lint:test": "tslint --project './tsconfig.test.json' --config './tslint.test.json' --format verbose",

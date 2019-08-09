@@ -1,0 +1,22 @@
+on: push
+name: Build + test on push
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build
+      uses: nuxt/actions-yarn@master
+      with:
+        args: build
+    - name: Install dependencies
+      uses: nuxt/actions-yarn@master
+      with:
+        args: install
+    - name: Test & publish code coverage
+      uses: paambaati/codeclimate-action@master
+      env:
+        CC_TEST_REPORTER_ID: 945dfb58a832d233a3caeb84e3e6d3be212e8c7abcb48117fce63b9adcb43647
+      with:
+        args: yarn coverage

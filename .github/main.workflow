@@ -1,6 +1,6 @@
 workflow "Build + test on push" {
   on = "push"
-  resolves = ["Publish code coverage"]
+  resolves = ["Test & publish code coverage"]
 }
 
 action "Install dependencies" {

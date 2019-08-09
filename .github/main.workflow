@@ -5,7 +5,7 @@ workflow "Code coverage" {
 
 action "Install dependencies" {
   uses = "nuxt/actions-yarn@master"
-  runs = "install"
+  args = "install"
 }
 
 action "Publish code coverage" {

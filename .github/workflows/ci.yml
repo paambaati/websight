@@ -1,4 +1,4 @@
-name: 🕷 websight CI
+name: 🕷 websight CI Workflow
 on: [ push, pull_request ]
 jobs:
   test:

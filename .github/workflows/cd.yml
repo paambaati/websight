@@ -1,0 +1,27 @@
+name: 🕷 websight CD Workflow
+on: [ release ]
+jobs:
+  build_binary:
+    name: Build executable binary
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        version: '12'
+    - run: npm install -g yarn
+    - run: yarn install
+    - run: yarn build
+    - run: yarn bundle
+    - run: yarn binary
+    - run: chmod -R ugo+x websight-*
+  attach_to_release:
+    name: Upload binaries to release
+    needs: [ build_binary ]
+    steps:
+    - uses: JasonEtco/upload-to-release@master
+      with:
+        args: websight-darwin-x64 application/x-mach-binary
+        args: websight-linux-x64 application/x-executable
+      secrets: 
+        GITHUB_TOKEN: 'xxx'

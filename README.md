@@ -34,6 +34,13 @@ yarn run coverage
 docker build -t websight .
 docker run -ti websight <website>
 ```
+### 📦 Executable Binary
+
+```bash
+yarn bundle && yarn binary
+```
+
+This produces standalone executable binaries for both Linux and macOS.
 
 ## 🧩 Design
 

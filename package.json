@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Crawler + sitemap generator for Monzo's coding challenge",
   "main": "lib/index.js",
+  "bin": {
+    "websight": "lib/index.js"
+  },
   "repository": {
     "url": "https://github.com/paambaati/websight",
     "type": "git"
@@ -17,7 +20,9 @@
     "lint": "tslint --project './tsconfig.json' --format verbose",
     "lint:test": "tslint --project './tsconfig.test.json' --config './tslint.test.json' --format verbose",
     "test": "NODE_ENV=test LOG_LEVEL=silent tape -r ts-node/register/transpile-only test/*.test.ts",
-    "coverage": "rm -rf ./node_modules/.cache && rm -rf coverage/ && rm -rf .nyc_output/ && NODE_ENV=test LOG_LEVEL=silent nyc tape -r ts-node/register/transpile-only test/*.test.ts"
+    "coverage": "rm -rf ./node_modules/.cache && rm -rf coverage/ && rm -rf .nyc_output/ && NODE_ENV=test LOG_LEVEL=silent nyc tape -r ts-node/register/transpile-only test/*.test.ts",
+    "bundle": "ncc build src/index.ts -o bundle",
+    "binary": "js2bin --cache --build --platform=darwin --platform=linux --app=./bundle/index.js --name=websight"
   },
   "engines": {
     "node": ">=6.3.0"
@@ -36,7 +41,9 @@
     "@types/pino": "5.8.8",
     "@types/tape": "4.2.33",
     "@types/test-console": "1.1.0",
+    "@zeit/ncc": "0.20.4",
     "get-stream": "5.1.0",
+    "js2bin": "1.0.6",
     "nock": "11.0.0-beta.31",
     "nyc": "14.1.1",
     "pino-pretty": "3.2.0",

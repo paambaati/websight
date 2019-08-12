@@ -26,13 +26,13 @@
     "agentkeepalive": "4.0.2",
     "got": "9.6.0",
     "htmlparser2": "3.10.1",
-    "pino": "5.13.1"
+    "pino": "5.13.2"
   },
   "devDependencies": {
-    "@types/got": "9.6.5",
+    "@types/got": "9.6.6",
     "@types/htmlparser2": "3.10.1",
     "@types/nock": "10.0.3",
-    "@types/node": "12.6.9",
+    "@types/node": "12.7.1",
     "@types/pino": "5.8.8",
     "@types/tape": "4.2.33",
     "@types/test-console": "1.1.0",

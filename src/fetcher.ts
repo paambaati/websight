@@ -1,5 +1,5 @@
 import { Duplex } from 'stream';
-import got from 'got';
+import { stream } from 'got';
 import HttpAgent, { HttpsAgent } from 'agentkeepalive';
 import Logger from './logger';
 
@@ -25,13 +25,13 @@ export default class Fetcher {
      * Send a request and return its response as a `Duplex` stream.
      * @param url - (Optional) URL to stream; defaults to `this.url`.
      * @param method - (Optional) HTTP method; defaults to `GET`.
-     * @throws Will throw an error on non-200 responses.
+     * @throws Will throw an error on non-`200` responses.
      * @returns HTTP response as a stream.
      */
     public getUrlResponse(url = this.url, method = 'GET'): Duplex {
         logger.debug('Fetching', url);
         // @ts-ignore TS2345 (let us assign `null` to user-agent header).
-        this.response = got.stream(url, {
+        this.response = stream(url, {
             method,
             agent: { // Use a keep-alive agent because we're crawling just the one domain.
                 http: httpAgent,

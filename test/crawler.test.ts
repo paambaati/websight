@@ -8,7 +8,11 @@ import { readFile } from './helpers/read-file';
  * Crawler tests.
  */
 
-nock.disableNetConnect();
+
+test('🛠 setup', t => {
+    nock.disableNetConnect();
+    t.end();
+});
 
 test('🕷  Crawler — constructor() set up the starting URL.', async t => {
     t.plan(1);
@@ -99,4 +103,8 @@ test('🕷  Crawler — crawl() should crawl all URLs and build a sitemap.', { t
     }, 5000);
 });
 
-nock.enableNetConnect();
+test('💣 teardown', t => {
+    nock.cleanAll();
+    nock.enableNetConnect();
+    t.end();
+});

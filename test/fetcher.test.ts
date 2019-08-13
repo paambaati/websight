@@ -8,7 +8,10 @@ import Fetcher from '../src/fetcher';
  * Fetcher tests.
  */
 
-nock.disableNetConnect();
+test('🛠 setup', t => {
+    nock.disableNetConnect();
+    t.end();
+});
 
 test('🌐 Fetcher — getUrlResponse() should return the response as a Duplex stream.', async t => {
     t.plan(2);
@@ -21,13 +24,22 @@ test('🌐 Fetcher — getUrlResponse() should return the response as a Duplex s
         });
     const fetcher = new Fetcher(url);
     const responseStream1 = fetcher.getUrlResponse();
-    const response1 = await getStream(responseStream1);
-    t.equal(response1, '<!DOCTYPE html><html><title>LOL</title><body></body></html>', 'should return the expected response as a stream.');
-    const responseStream2 = fetcher.getUrlResponse(url, 'GET'); // Test with URL argument.
-    const response2 = await getStream(responseStream2);
-    t.equal(response2, '<!DOCTYPE html><html><title>LOL</title><body></body></html>', 'should return the expected response as a stream.');
+    try {
+        const response1 = await getStream(responseStream1);
+        t.equal(response1, '<!DOCTYPE html><html><title>LOL</title><body></body></html>', 'should return the expected response as a stream.');
+        const responseStream2 = fetcher.getUrlResponse(url, 'GET'); // Test with URL argument.
+        const response2 = await getStream(responseStream2);
+        t.equal(response2, '<!DOCTYPE html><html><title>LOL</title><body></body></html>', 'should return the expected response as a stream.');
+    } catch (err) {
+        nock.cleanAll();
+        t.fail(err);
+    }
     nock.cleanAll();
     t.end();
 });
 
-nock.enableNetConnect();
+test('💣 teardown', t => {
+    nock.cleanAll();
+    nock.enableNetConnect();
+    t.end();
+});

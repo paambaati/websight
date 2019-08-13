@@ -9,7 +9,10 @@ import { readFile } from './helpers/read-file';
  * Link Extractor tests.
  */
 
-nock.disableNetConnect();
+test('🛠 setup', t => {
+    nock.disableNetConnect();
+    t.end();
+});
 
 test('🔗 LinkExtractor — getLinks() should return links on a page.', async t => {
     t.plan(1);
@@ -81,4 +84,8 @@ test('🔗 LinkExtractor — getLinks() should throw an Error when Parser.parse(
     });
 });
 
-nock.enableNetConnect();
+test('💣 teardown', t => {
+    nock.cleanAll();
+    nock.enableNetConnect();
+    t.end();
+});

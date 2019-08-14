@@ -1,11 +1,11 @@
-name: 🕷 websight CI Workflow
+name: 🕷 ci
 on: [ push, pull_request ]
 jobs:
   test:
     strategy:
       matrix:
-        platform: [ ubuntu-latest, macOS-latest, windows-latest ]
-        node: [ '12', '10', '8' ]
+        platform: [ ubuntu-latest, macOS-latest ]
+        node: [ '12', '10' ]
     name: Build and test on Node v${{ matrix.node }} and ${{ matrix.platform }}
     runs-on: ${{ matrix.platform }}
     steps:

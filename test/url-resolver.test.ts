@@ -14,7 +14,7 @@ test('📍 URLResolver — constructor() should create `startingUrl`.', t => {
     const resolver2 = new URLResolver(input2);
     t.equals(resolver2.startingUrl, 'http://example.com', 'protocol shouldn\'t be touched if the input URL includes it.');
     const input3 = 'http://example.com/';
-    const resolver3 = new URLResolver(input2);
+    const resolver3 = new URLResolver(input3);
     t.equals(resolver3.startingUrl, 'http://example.com', 'trailing slash should be stripped.');
     t.end();
 });

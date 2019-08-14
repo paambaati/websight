@@ -1,6 +1,6 @@
 import test from 'tape';
 import { EOL } from 'os';
-import { run } from './helpers/run-program';
+import run from './helpers/run-program';
 
 /**
  * CLI tests.

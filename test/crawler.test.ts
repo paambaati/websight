@@ -2,12 +2,11 @@ import test from 'tape';
 import nock from 'nock';
 import toReadableStream from 'to-readable-stream';
 import Crawler from '../src/crawler';
-import { readFile } from './helpers/read-file';
+import readFile from './helpers/read-file';
 
 /**
  * Crawler tests.
  */
-
 
 test('🛠 setup', t => {
     nock.disableNetConnect();
@@ -35,8 +34,9 @@ test('🕷  Crawler — crawl() should halt when it encounters an error in linkE
     nock(url)
         .persist()
         .get('/')
-        .reply(429, () => { // We've made Got throw on non-2xx errors, so expect this to throw.
-            return toReadableStream('Too Many Requests!');
+        .reply(429, () => {
+            // We've made Got throw on non-2xx errors, so expect this to throw.
+            toReadableStream('Too Many Requests!');
         });
 
     const crawler = new Crawler(url);
@@ -60,30 +60,22 @@ test('🕷  Crawler — crawl() should crawl all URLs and build a sitemap.', { t
     nock(url)
         .persist()
         .get('/')
-        .reply(200, () => {
-            return toReadableStream(html1);
-        });
+        .reply(200, () => toReadableStream(html1));
 
     nock(url)
         .persist()
         .get('/second-page')
-        .reply(200, () => {
-            return toReadableStream(html2);
-        });
+        .reply(200, () => toReadableStream(html2));
 
     nock(url)
         .persist()
         .get(/^\/third-page(.*)$/)
-        .reply(200, () => {
-            return toReadableStream(html3);
-        });
+        .reply(200, () => toReadableStream(html3));
 
     nock(url)
         .persist()
         .get('/fourth-page')
-        .reply(200, () => {
-            return toReadableStream(html4);
-        });
+        .reply(200, () => toReadableStream(html4));
 
     const crawler = new Crawler(url);
     crawler.crawl();
@@ -91,7 +83,7 @@ test('🕷  Crawler — crawl() should crawl all URLs and build a sitemap.', { t
     setTimeout(() => {
         // Assume the sitemap building will complete in 5 seconds.
         // This is a wee bit hacky but we do this because we don't know when the recursive crawling actually ends.
-        const sitemap = crawler.sitemap;
+        const { sitemap } = crawler;
         t.same(sitemap.sitemap, new Map([
             ['http://www.example.com', new Set(['http://www.example.com/second-page', 'http://www.example.com/third-page/#readme'])],
             ['http://www.example.com/second-page', new Set(['http://www.example.com/second-page', 'http://www.example.com/third-page/#readme'])],

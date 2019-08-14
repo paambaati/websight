@@ -40,7 +40,12 @@
     "@types/pino": "5.8.8",
     "@types/tape": "4.2.33",
     "@types/test-console": "1.1.0",
+    "@typescript-eslint/eslint-plugin": "2.0.0",
+    "@typescript-eslint/parser": "2.0.0",
     "@zeit/ncc": "0.20.4",
+    "eslint": "6.1.0",
+    "eslint-config-airbnb-typescript": "4.0.1",
+    "eslint-plugin-import": "2.18.2",
     "get-stream": "5.1.0",
     "js2bin": "1.0.6",
     "nock": "11.0.0",
@@ -51,8 +56,6 @@
     "test-console": "1.1.0",
     "to-readable-stream": "2.1.0",
     "ts-node": "8.3.0",
-    "tslint": "5.18.0",
-    "tslint-config-airbnb": "5.11.1",
     "typescript": "3.5.3"
   }
 }

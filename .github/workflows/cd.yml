@@ -1,4 +1,4 @@
-name: 🕷 websight CD Workflow
+name: 🕷 cd
 on: [ release ]
 jobs:
   build_binary:

@@ -6,7 +6,7 @@ jobs:
       matrix:
         platform: [ ubuntu-latest, macOS-latest ]
         node: [ '12', '10' ]
-    name: Build and test on Node v${{ matrix.node }} and ${{ matrix.platform }}
+    name: test/node ${{ matrix.node }}/${{ matrix.platform }}
     runs-on: ${{ matrix.platform }}
     steps:
     - uses: actions/checkout@master
@@ -19,7 +19,7 @@ jobs:
     - run: yarn test
   coverage:
     needs: [ test ]
-    name: Publish code coverage to Code Climate
+    name: coverage
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master

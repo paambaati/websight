@@ -2,7 +2,7 @@ name: 🕷 cd
 on: [ release ]
 jobs:
   build_binary:
-    name: Build executable binary
+    name: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -16,7 +16,7 @@ jobs:
     - run: yarn binary
     - run: chmod -R ugo+x websight-*
   attach_to_release:
-    name: Upload binaries to release
+    name: attach
     needs: [ build_binary ]
     steps:
     - uses: JasonEtco/upload-to-release@master

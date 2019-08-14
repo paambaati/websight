@@ -3,11 +3,14 @@ import LinkExtractor, { Links } from './link-extractor';
 import Sitemap from './sitemap';
 import Logger from './logger';
 
-const logger = new Logger('crawler').logger;
+const { logger } = new Logger('crawler');
 
 export default class Crawler {
     public startingUrl: string;
-    public sitemap: Sitemap; // ⚠️ Sitemap _can_ grow too big for very large sites.
+
+    // ⚠️ Sitemap _can_ grow too big for very large sites.
+    public sitemap: Sitemap;
+
     /**
      * Crawls a given website and builds a sitemap of all the links between pages.
      * @param url - Website address.
@@ -24,6 +27,7 @@ export default class Crawler {
         this.startingUrl = new URLResolver(url).startingUrl;
         this.sitemap = new Sitemap();
     }
+
     /**
      * Start crawling the given website.
      *
@@ -31,7 +35,7 @@ export default class Crawler {
      * @param url - Website address.
      * @param visitedUrls - URLs crawled so far (used for remembering recursion state).
      */
-    public async crawl(url: string | null = this.startingUrl, visitedUrls: Set<string> = new Set([this.startingUrl])): Promise<void> {
+    public async crawl(url: string | null = this.startingUrl, visitedUrls: Set<string> = new Set([this.startingUrl])): Promise<void> { // eslint-disable-line max-len
         if (!url) return;
         let links: Links = {
             urls: new Set<string>(),
@@ -41,7 +45,7 @@ export default class Crawler {
         try {
             links = await linkExtractor.getLinks();
         } catch {
-            return this.crawl(null, visitedUrls);
+            return this.crawl(null, visitedUrls); // eslint-disable-line consistent-return
         }
         visitedUrls.add(url); // Getting outbound URLs was successful, so add it to visited URLs.
         this.sitemap.addLink(url, links);

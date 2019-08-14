@@ -1,9 +1,9 @@
 import URLResolver from './url-resolver';
 import Fetcher from './fetcher';
-import Parser from './parser';
+import Parser from './parser'; // eslint-disable-line import/no-named-as-default
 import Logger from './logger';
 
-const logger = new Logger('link-extractor').logger;
+const { logger } = new Logger('link-extractor');
 
 /**
  * All links (outbound URLs and static assets) found in a page.
@@ -21,6 +21,7 @@ export type Links = {
 
 export default class LinkExtractor {
     public parser!: Parser;
+
     /**
      * Extracts all the same-domain hyperlinks and static assets in a given page URL.
      * @param url - URL to fetch and extract links out of.
@@ -31,7 +32,8 @@ export default class LinkExtractor {
      * await linkExtractor.getLinks(); // All hyperlinks & assets on page.
      * ```
      */
-    constructor(private url: string) { }
+    constructor(private url: string) { } // eslint-disable-line max-len, no-useless-constructor, no-empty-function
+
     /**
      * Get all outbound links and static asset URLs in the page.
      * For outbound links, only own-domain and followable URLs are returned.
@@ -49,7 +51,7 @@ export default class LinkExtractor {
                 // Perhaps handle statusCode === 429 with rate-limiting?
                 logger.error('Error fetching HTML!', {
                     url: fetcher.url,
-                    statusCode: err['statusCode'],
+                    statusCode: err['statusCode'], // eslint-disable-line dot-notation
                     message: err.message,
                 });
                 return reject(err);

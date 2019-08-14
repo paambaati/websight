@@ -16,12 +16,10 @@ test('🛠 setup', t => {
 test('🌐 Fetcher — getUrlResponse() should return the response as a Duplex stream.', async t => {
     t.plan(2);
     const url = 'http://www.example.com/lol';
-    const mock = await nock('http://www.example.com')
+    await nock('http://www.example.com')
         .get('/lol')
         .times(2)
-        .reply(200, () => {
-            return toReadableStream('<!DOCTYPE html><html><title>LOL</title><body></body></html>');
-        });
+        .reply(200, () => toReadableStream('<!DOCTYPE html><html><title>LOL</title><body></body></html>'));
     const fetcher = new Fetcher(url);
     const responseStream1 = fetcher.getUrlResponse();
     try {

@@ -1,0 +1,9 @@
+{
+    "extends": "./.eslintrc.json",
+    "parserOptions": {
+        "project": "./tsconfig.test.json"
+    },
+    "rules": {
+        "max-len": ["error", { "code": 180 }]
+    }
+}

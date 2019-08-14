@@ -2,8 +2,7 @@ import test from 'tape';
 import nock from 'nock';
 import toReadableStream from 'to-readable-stream';
 import LinkExtractor from '../src/link-extractor';
-import Parser from '../src/parser';
-import { readFile } from './helpers/read-file';
+import readFile from './helpers/read-file';
 
 /**
  * Link Extractor tests.
@@ -17,11 +16,9 @@ test('🛠 setup', t => {
 test('🔗 LinkExtractor — getLinks() should return links on a page.', async t => {
     t.plan(1);
     const html = await readFile('./fixtures/link_extractor_1.html');
-    const mock = await nock('http://www.example.com')
+    await nock('http://www.example.com')
         .get('/')
-        .reply(200, () => {
-            return toReadableStream(html);
-        });
+        .reply(200, () => toReadableStream(html));
     const linkExtractor = new LinkExtractor('http://www.example.com');
     const links = await linkExtractor.getLinks();
     t.same(links, {
@@ -40,7 +37,7 @@ test('🔗 LinkExtractor — getLinks() should return links on a page.', async t
 
 test('🔗 LinkExtractor — getLinks() should throw an Error when Fetcher.getUrlResponse() fails.', async t => {
     t.plan(1);
-    const mock = await nock('http://www.example.com')
+    await nock('http://www.example.com')
         .get('/does-not-exist')
         .reply(404);
     const linkExtractor = new LinkExtractor('http://www.example.com/does-not-exist');
@@ -56,11 +53,9 @@ test('🔗 LinkExtractor — getLinks() should throw an Error when Fetcher.getUr
 test('🔗 LinkExtractor — getLinks() should throw an Error when Parser.parse() fails.', async t => {
     t.plan(1);
     const html = await readFile('./fixtures/link_extractor_1.html');
-    const mock = await nock('http://www.example.com')
+    await nock('http://www.example.com')
         .get('/')
-        .reply(200, () => {
-            return toReadableStream(html);
-        });
+        .reply(200, () => toReadableStream(html));
 
     const linkExtractor = new LinkExtractor('http://www.example.com/');
     const getLinks = linkExtractor.getLinks();
@@ -74,11 +69,9 @@ test('🔗 LinkExtractor — getLinks() should throw an Error when Parser.parse(
 
     getLinks.then(() => {
         t.fail('cannot succeed.');
-    })
-    .catch(err => {
+    }).catch(() => {
         t.pass('should throw an error.');
-    })
-    .finally(() => {
+    }).finally(() => {
         nock.cleanAll();
         t.end();
     });

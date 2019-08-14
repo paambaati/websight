@@ -1,4 +1,4 @@
-import { readFile as read, link } from 'fs';
+import { readFile as read } from 'fs';
 import { join, resolve } from 'path';
 import { promisify } from 'util';
 
@@ -14,7 +14,7 @@ const readFileAsync = promisify(read);
  * console.log(contents); // Prints contents of /tmp/example.txt
  * ```
  */
-export async function readFile(filename: string, encoding: string = 'utf-8'): Promise<string> {
+export default async function readFile(filename: string, encoding: string = 'utf-8'): Promise<string> {
     const absolutePath = resolve(join(__dirname, '../', filename));
-    return await readFileAsync(absolutePath, { encoding: 'utf-8' });
+    return readFileAsync(absolutePath, { encoding });
 }

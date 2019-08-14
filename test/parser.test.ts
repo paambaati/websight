@@ -1,7 +1,7 @@
 import test from 'tape';
 import toReadableStream from 'to-readable-stream';
-import Parser from '../src/parser';
-import { readFile } from './helpers/read-file';
+import Parser from '../src/parser'; // eslint-disable-line import/no-named-as-default
+import readFile from './helpers/read-file';
 
 /**
  * Parser tests.
@@ -22,4 +22,3 @@ test('🧮 Parser — parse() should parse a HTML stream.', async t => {
     });
     parser.parse();
 });
-

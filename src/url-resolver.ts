@@ -2,6 +2,7 @@ import { URL } from 'url';
 
 export default class URLResolver {
     private urlObject: URL;
+
     /**
      * URL resolver utility.
      * Normalizes URLs and strips trailing slash.

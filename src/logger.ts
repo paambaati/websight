@@ -2,7 +2,9 @@ import pino from 'pino';
 
 export default class Logger {
     private options: pino.LoggerOptions;
+
     public logger: pino.Logger;
+
     /**
      * Logging wrapper for [`pino`](https://github.com/pinojs/pino).
      * @param appName - Unique identifier in log (used as a prefix).

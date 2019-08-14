@@ -5,10 +5,11 @@ import Logger from './logger';
 
 const httpAgent = new HttpAgent({ keepAlive: true });
 const httpsAgent = new HttpsAgent({ keepAlive: true });
-const logger = new Logger('fetcher').logger;
+const { logger } = new Logger('fetcher');
 
 export default class Fetcher {
     public response!: Duplex;
+
     /**
      * Fetches a given URL as a `Duplex` stream.
      * @param url - URL to fetch.
@@ -19,7 +20,7 @@ export default class Fetcher {
      * await fetcher.getUrlResponse(); // HTTP `GET` response as Duplex stream.
      * ```
      */
-    constructor(public url: string) { }
+    constructor(public url: string) { } // eslint-disable-line max-len, no-useless-constructor, no-empty-function
 
     /**
      * Send a request and return its response as a `Duplex` stream.

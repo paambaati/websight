@@ -3,7 +3,7 @@ import { Readable, Duplex } from 'stream';
 import { Parser as HTMLParser } from 'htmlparser2';
 import Logger from './logger';
 
-const logger = new Logger('parser').logger;
+const { logger } = new Logger('parser');
 
 export declare interface Parser {
     /**
@@ -30,6 +30,7 @@ export declare interface Parser {
 
 export class Parser extends EventEmitter implements Parser {
     public streamParser!: HTMLParser;
+
     /**
      * Parses a HTML stream for anchor (`<a></a>`) tags.
      * @param inputStream - `Readable` or `Duplex` stream of HTML.
@@ -50,7 +51,7 @@ export class Parser extends EventEmitter implements Parser {
         super();
     }
 
-    private isFollowableUrl(url: string): boolean {
+    private static isFollowableUrl(url: string): boolean {
         if (!url) return false;
         if (!url.trim().length) return false; // Make sure the href tag has SOME value.
         if (url.startsWith('//')) return false; // Filter out protocol-agnostic absolute URLs (these are probably 3rd party).
@@ -74,8 +75,8 @@ export class Parser extends EventEmitter implements Parser {
             onopentag: (tagName: string, attribs: any) => {
                 if (tagName === 'a') {
                     logger.trace('Found anchor tag!', attribs);
-                    const href: string = attribs.href;
-                    if (this.isFollowableUrl(href)) {
+                    const { href } = attribs;
+                    if (Parser.isFollowableUrl(href)) {
                         this.emit('link', href);
                     }
                 } else if (['link', 'script', 'img'].includes(tagName)) {
@@ -85,7 +86,7 @@ export class Parser extends EventEmitter implements Parser {
                     }
                 }
             },
-            onerror: /* istanbul ignore next (because this path is *LITERALLY* untestable) */ err => {
+            onerror: /* istanbul ignore next */ err => {
                 this.emit('error', err);
             },
             onend: () => {

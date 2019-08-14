@@ -2,6 +2,7 @@ import { Links } from './link-extractor';
 
 export default class Sitemap {
     public sitemap: Map<string, Links>;
+
     /**
      * Builds a sitemap of URLs and their child links.
      * @example
@@ -21,10 +22,8 @@ export default class Sitemap {
         this.sitemap = new Map();
     }
 
-    private combineSets(sets: Set<any>[]): Set<any> {
-        return sets.reduce((combined, list) => {
-            return new Set([...combined, ...list]);
-        }, new Set());
+    private static combineSets(sets: Set<any>[]): Set<any> {
+        return sets.reduce((combined, list) => new Set([...combined, ...list]), new Set());
     }
 
     private getLinksInUrl(url: string): Links {
@@ -42,12 +41,12 @@ export default class Sitemap {
         const allLinks = this.getLinksInUrl(url);
 
         // Print assets.
-        for (const asset of allLinks.assets) {
+        for (const asset of allLinks.assets) { // eslint-disable-line no-restricted-syntax
             console.log(`${'│ '.repeat(level + 1)}├📦 ${asset}`);
         }
 
         // Print page URLs.
-        for (const link of allLinks.urls) {
+        for (const link of allLinks.urls) { // eslint-disable-line no-restricted-syntax
             console.log(`${'│ '.repeat(level + 1)}└─🔗 ${link}`);
             if (!alreadyPrinted.has(link)) {
                 this.sitemapPrinter(link, alreadyPrinted, level + 1);
@@ -66,8 +65,8 @@ export default class Sitemap {
             const currentLinks = (this.sitemap.get(url) as Links);
 
             this.sitemap.set(url, {
-                urls: this.combineSets([currentLinks.urls, links.urls]),
-                assets: this.combineSets([currentLinks.assets, links.assets]),
+                urls: Sitemap.combineSets([currentLinks.urls, links.urls]),
+                assets: Sitemap.combineSets([currentLinks.assets, links.assets]),
             });
         } else {
             this.sitemap.set(url, links);

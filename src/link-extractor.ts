@@ -51,7 +51,7 @@ export default class LinkExtractor {
                 // Perhaps handle statusCode === 429 with rate-limiting?
                 logger.error('Error fetching HTML!', {
                     url: fetcher.url,
-                    statusCode: err.statusCode,
+                    statusCode: err['statusCode'], // eslint-disable-line dot-notation
                     message: err.message,
                 });
                 return reject(err);

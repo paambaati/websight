@@ -27,6 +27,10 @@
   "engines": {
     "node": ">=6.3.0"
   },
+  "os": [
+    "linux",
+    "darwin"
+  ],
   "dependencies": {
     "agentkeepalive": "4.0.2",
     "got": "9.6.0",

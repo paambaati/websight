@@ -1,6 +1,6 @@
 # websight
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/170cf9f21bdb38fd63a1/test_coverage)](https://codeclimate.com/github/paambaati/websight/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/170cf9f21bdb38fd63a1/maintainability)](https://codeclimate.com/github/paambaati/websight/maintainability) [![WTFPL License](https://img.shields.io/badge/License-WTFPL-blue.svg)](LICENSE)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fpaambaati%2Fwebsight%2Fbadge&style=flat)](https://actions-badge.atrox.dev/paambaati/websight/goto) [![Test Coverage](https://api.codeclimate.com/v1/badges/170cf9f21bdb38fd63a1/test_coverage)](https://codeclimate.com/github/paambaati/websight/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/170cf9f21bdb38fd63a1/maintainability)](https://codeclimate.com/github/paambaati/websight/maintainability) [![WTFPL License](https://img.shields.io/badge/License-WTFPL-blue.svg)](LICENSE)
 
 A simple crawler that fetches all pages in a given website and prints the links between them.
 

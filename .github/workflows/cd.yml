@@ -22,6 +22,10 @@ jobs:
     - uses: JasonEtco/upload-to-release@master
       with:
         args: websight-darwin-x64 application/x-mach-binary
-        args: websight-linux-x64 application/x-executable
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: JasonEtco/upload-to-release@master
+      with:
+        args: websight-darwin-x64 application/x-mach-binary
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

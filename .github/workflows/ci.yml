@@ -1,5 +1,11 @@
 name: 🕷 ci
-on: [ push, pull_request ]
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - !* # Do not execute on tags
+  pull_request:
 jobs:
   test:
     strategy:

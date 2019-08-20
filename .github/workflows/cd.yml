@@ -27,3 +27,9 @@ jobs:
         args: 'websight-darwin-x64 application/x-mach-binary'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: JasonEtco/upload-to-release@master
+      name: upload-windows-binary
+      with:
+        args: 'websight-windows-x64 application/vnd.microsoft.portable-executable'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

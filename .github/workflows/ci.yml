@@ -9,7 +9,6 @@ on:
       - src/*
       - test/*
       - '*.json'
-      - '.github/workflows/*'
       - yarn.lock
   pull_request:
     paths:

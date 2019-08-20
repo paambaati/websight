@@ -4,8 +4,16 @@ on:
     branches:
       - master
     tags:
-      - !* # Do not execute on tags
+      - '!*' # Do not execute on tags
+    paths:
+      - src/*
+      - test/*
+      - '*.json'
+      - '.github/workflows/*'
+      - yarn.lock
   pull_request:
+    paths:
+      - '!*.MD'
 jobs:
   test:
     strategy:

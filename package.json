@@ -22,7 +22,7 @@
     "test": "NODE_ENV=test LOG_LEVEL=silent tape -r ts-node/register/transpile-only test/*.test.ts",
     "coverage": "rm -rf ./node_modules/.cache && rm -rf coverage/ && rm -rf .nyc_output/ && NODE_ENV=test LOG_LEVEL=silent nyc tape -r ts-node/register/transpile-only test/*.test.ts",
     "bundle": "ncc build src/index.ts -o bundle",
-    "binary": "js2bin --cache --build --platform=darwin --platform=linux --app=./bundle/index.js --name=websight"
+    "binary": "js2bin --cache --build --platform=darwin --platform=linux --platform=windows --app=./bundle/index.js --name=websight"
   },
   "engines": {
     "node": ">=6.3.0"

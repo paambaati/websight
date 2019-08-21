@@ -17,6 +17,7 @@
     "start": "node lib/index.js",
     "debug": "run(){ LOG_LEVEL=debug ts-node -T src/index.ts \"$1\" | pino-pretty --colorize; }; run",
     "build": "tsc",
+    "format": "eslint --fix --ext .ts src/ && eslint --fix --config .eslintrc.test.json --ext .ts test/",
     "lint": "eslint --ext .ts src/",
     "lint:test": "eslint --config .eslintrc.test.json --ext .ts test/",
     "test": "NODE_ENV=test LOG_LEVEL=silent tape -r ts-node/register/transpile-only test/*.test.ts",

@@ -19,10 +19,23 @@ export default async function run(program: string, args: string[], stream: 'stdo
         prc[stream].on('data', data => {
             output += data.toString();
         });
-        prc.on('close', code => resolve({
-            code,
-            output,
-        }));
-        prc.on('error', err => reject(err));
+        prc.on('error', err => {
+            reject(err);
+        });
+        prc.on('exit', (code, signal) => {
+            if (code) {
+                const err = new Error(`Program exited with code ${code}`);
+                err['exitCode'] = code;
+                err['output'] = output;
+                reject(err);
+            } else if (signal) {
+                const err = new Error(`Program was killed with signal ${signal}`);
+                err['signal'] = signal;
+                err['output'] = output;
+                reject(err);
+            } else {
+                resolve({ code, output });
+            }
+        });
     });
 }

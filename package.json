@@ -46,7 +46,7 @@
     "@types/test-console": "1.1.0",
     "@typescript-eslint/eslint-plugin": "2.3.2",
     "@typescript-eslint/parser": "2.0.0",
-    "@zeit/ncc": "0.20.4",
+    "@zeit/ncc": "0.20.5",
     "eslint": "6.3.0",
     "eslint-config-airbnb-typescript": "4.0.1",
     "eslint-plugin-import": "2.18.2",

@@ -1,4 +1,4 @@
-name: 🕷 cd
+name: release
 on: [ release ]
 jobs:
   build_binary:

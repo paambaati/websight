@@ -55,7 +55,7 @@
     "nock": "11.6.0",
     "nyc": "14.1.1",
     "pino-pretty": "3.2.1",
-    "qs": "6.9.0",
+    "qs": "6.9.1",
     "tape": "4.11.0",
     "test-console": "1.1.0",
     "to-readable-stream": "2.1.0",

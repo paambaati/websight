@@ -48,7 +48,7 @@
     "@typescript-eslint/parser": "2.5.0",
     "@zeit/ncc": "0.20.5",
     "eslint": "6.3.0",
-    "eslint-config-airbnb-typescript": "6.0.0",
+    "eslint-config-airbnb-typescript": "6.2.0",
     "eslint-plugin-import": "2.18.2",
     "get-stream": "5.1.0",
     "js2bin": "1.0.6",

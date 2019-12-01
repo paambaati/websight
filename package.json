@@ -54,7 +54,7 @@
     "js2bin": "1.0.6",
     "nock": "11.6.0",
     "nyc": "14.1.1",
-    "pino-pretty": "3.2.1",
+    "pino-pretty": "3.4.0",
     "qs": "6.9.0",
     "tape": "4.11.0",
     "test-console": "1.1.0",

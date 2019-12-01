@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@types/got": "9.6.7",
-    "@types/node": "12.7.9",
+    "@types/node": "12.12.14",
     "@types/pino": "5.8.10",
     "@types/tape": "4.2.33",
     "@types/test-console": "1.1.0",

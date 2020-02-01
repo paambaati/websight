@@ -44,7 +44,7 @@
     "@types/pino": "5.8.10",
     "@types/tape": "4.2.33",
     "@types/test-console": "1.1.0",
-    "@typescript-eslint/eslint-plugin": "2.3.2",
+    "@typescript-eslint/eslint-plugin": "2.18.0",
     "@typescript-eslint/parser": "2.5.0",
     "@zeit/ncc": "0.20.5",
     "eslint": "6.3.0",

@@ -750,10 +750,10 @@ eslint-config-airbnb-base@^14.0.0:
     object.assign "^4.1.0"
     object.entries "^1.1.0"
 
-eslint-config-airbnb-typescript@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-typescript/-/eslint-config-airbnb-typescript-6.0.0.tgz#3c76329a23276c696f32e46a7507f1272107fa0b"
-  integrity sha512-jPAcwgOv9NXDnZsz40GziLW+oFrKu4e+xSVNnTo1BhjV6be2M4ugGssX4nOQvHhJqm3ylkjSjGmM7SxBBvkiBw==
+eslint-config-airbnb-typescript@6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-typescript/-/eslint-config-airbnb-typescript-6.2.0.tgz#4e83a577d5c45365a9b3d7ad9866e2839e1e0564"
+  integrity sha512-q7w6Y/cMOeKhXLTowYtpOJL6bazMyAVbzJJ6WQAcNtJBcBrVrVtg4+/CMsL0lfTT+3//6Nfm+Kc0g7U+BCx2rQ==
   dependencies:
     "@typescript-eslint/parser" "^2.3.0"
     eslint-config-airbnb "^18.0.1"

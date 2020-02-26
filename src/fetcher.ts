@@ -31,7 +31,6 @@ export default class Fetcher {
      */
     public getUrlResponse(url = this.url, method = 'GET'): Duplex {
         logger.debug('Fetching', url);
-        // @ts-ignore TS2345 (let us assign `null` to user-agent header).
         this.response = stream(url, {
             method,
             agent: { // Use a keep-alive agent because we're crawling just the one domain.
@@ -41,6 +40,7 @@ export default class Fetcher {
             timeout: 30000, // Timeout after 30 seconds.
             throwHttpErrors: true, // Throw on non-2xx errors.
             headers: {
+                // @ts-ignore TS2345 (let us assign `null` to user-agent header).
                 'user-agent': null, // Empty out the user-agent.
             },
         });

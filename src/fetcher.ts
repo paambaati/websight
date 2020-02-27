@@ -1,7 +1,9 @@
 import { Duplex } from 'stream';
-import { stream } from 'got';
+import type { Method } from 'got';
+import stream from 'got/dist/source';
 import HttpAgent, { HttpsAgent } from 'agentkeepalive';
 import Logger from './logger';
+import { type } from 'os';
 
 const httpAgent = new HttpAgent({ keepAlive: true });
 const httpsAgent = new HttpsAgent({ keepAlive: true });
@@ -29,9 +31,10 @@ export default class Fetcher {
      * @throws Will throw an error on non-`200` responses.
      * @returns HTTP response as a stream.
      */
-    public getUrlResponse(url = this.url, method = 'GET'): Duplex {
+    public getUrlResponse(url = this.url, method: Method = 'GET'): Duplex {
         logger.debug('Fetching', url);
         this.response = stream(url, {
+            isStream: true,
             method,
             agent: { // Use a keep-alive agent because we're crawling just the one domain.
                 http: httpAgent,
@@ -40,8 +43,7 @@ export default class Fetcher {
             timeout: 30000, // Timeout after 30 seconds.
             throwHttpErrors: true, // Throw on non-2xx errors.
             headers: {
-                // @ts-ignore TS2345 (let us assign `null` to user-agent header).
-                'user-agent': null, // Empty out the user-agent.
+                'user-agent': undefined, // Do not set the user-agent.
             },
         });
         return this.response;

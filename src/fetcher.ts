@@ -3,7 +3,6 @@ import type { Method } from 'got';
 import stream from 'got/dist/source';
 import HttpAgent, { HttpsAgent } from 'agentkeepalive';
 import Logger from './logger';
-import { type } from 'os';
 
 const httpAgent = new HttpAgent({ keepAlive: true });
 const httpsAgent = new HttpsAgent({ keepAlive: true });

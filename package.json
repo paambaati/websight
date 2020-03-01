@@ -52,7 +52,7 @@
     "eslint-plugin-import": "2.20.1",
     "get-stream": "5.1.0",
     "js2bin": "1.0.6",
-    "nock": "12.0.1",
+    "nock": "12.0.2",
     "nyc": "15.0.0",
     "pino-pretty": "3.6.0",
     "qs": "6.9.1",

@@ -48,5 +48,3 @@ jobs:
       with:
         coverageCommand: yarn coverage
         debug: true
-        coverageLocations:
-          "${{github.workspace}}/coverage/lcov.info:lcov"

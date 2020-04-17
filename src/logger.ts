@@ -1,6 +1,12 @@
 import pino from 'pino';
 
 export default class Logger {
+    private defaultOptions: pino.LoggerOptions = {
+        serializers: {
+            err: pino.stdSerializers.err,
+        },
+    };
+
     private options: pino.LoggerOptions;
 
     public logger: pino.Logger;
@@ -18,24 +24,41 @@ export default class Logger {
      */
     constructor(private appName: string, options?: pino.LoggerOptions) {
         if (!options) {
-            const logLevelEnv = process.env.LOG_LEVEL ? process.env.LOG_LEVEL : '';
             this.options = {
                 name: this.appName,
-                // Log levels - https://github.com/pinojs/pino/blob/master/docs/API.md#discussion-3
-                level: logLevelEnv.length ? logLevelEnv : 'info',
-                useLevelLabels: true,
+                ...this.defaultOptions,
             };
         } else {
             this.options = {
                 name: this.appName,
+                ...this.defaultOptions,
                 ...options,
             };
         }
-        this.options.enabled = (this.options.level !== 'silent');
-        this.options.serializers = {
-            err: pino.stdSerializers.err,
-        };
+        this.options.enabled = this.shouldEnable(options);
         this.logger = pino(this.options);
+        // Log levels — https://github.com/pinojs/pino/blob/master/docs/api.md#loggerlevel-string-gettersetter
+        this.logger.level = process.env.LOG_LEVEL || this.options.level || 'info';
         return this;
+    }
+
+    /**
+     * Tells if pino should be enabled.
+     *
+     * If `options.enabled` is set, then its value is returned as-is.
+     * If `options.level` is set and it's value is 'silent', then enabled is set to `false`.
+     * If neither of these cases are met, then it defaults to `true`.
+     * @param options Logger options.
+     */
+    /* eslint-disable class-methods-use-this */
+    private shouldEnable(options: pino.LoggerOptions | undefined): boolean {
+        if (options) {
+            if (Object.prototype.hasOwnProperty.call(options, 'enabled')) {
+                return Boolean(options.enabled);
+            } if (Object.prototype.hasOwnProperty.call(options, 'level')) {
+                return options.level !== 'silent';
+            }
+        }
+        return true;
     }
 }

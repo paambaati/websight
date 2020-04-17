@@ -40,6 +40,7 @@ export default class LinkExtractor {
      * @returns All hyperlinks and static asset URLs found.
      */
     public async getLinks(): Promise<Links> {
+        /* eslint-disable no-async-promise-executor */
         return new Promise(async (resolve, reject) => {
             const urls: Set<string> = new Set();
             const assets: Set<string> = new Set();
@@ -47,7 +48,7 @@ export default class LinkExtractor {
             const fetcher = new Fetcher(resolver.startingUrl);
             const htmlStream = await fetcher.getUrlResponse();
             // Attach event listeners first.
-            htmlStream.on('error', err => {
+            htmlStream.on('error', (err) => {
                 // Perhaps handle statusCode === 429 with rate-limiting?
                 logger.error('Error fetching HTML!', {
                     url: fetcher.url,
@@ -57,17 +58,17 @@ export default class LinkExtractor {
                 return reject(err);
             });
             this.parser = new Parser(htmlStream);
-            this.parser.on('error', err => {
+            this.parser.on('error', (err) => {
                 logger.error('Error parsing HTML stream!', err);
                 return reject(err);
             });
-            this.parser.on('link', link => {
+            this.parser.on('link', (link) => {
                 const fullUrl = resolver.getAbsoluteUrl(link);
                 if (fullUrl !== resolver.startingUrl && resolver.isURLInDomain(fullUrl)) {
                     urls.add(fullUrl);
                 }
             });
-            this.parser.on('asset', link => {
+            this.parser.on('asset', (link) => {
                 const fullUrl = resolver.getAbsoluteUrl(link);
                 if (fullUrl !== resolver.startingUrl) { // Make sure the page doesn't add itself.
                     assets.add(fullUrl);

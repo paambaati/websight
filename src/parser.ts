@@ -86,7 +86,7 @@ export class Parser extends EventEmitter implements Parser {
                     }
                 }
             },
-            onerror: /* istanbul ignore next */ err => {
+            onerror: /* istanbul ignore next */ (err) => {
                 this.emit('error', err);
             },
             onend: () => {
@@ -94,7 +94,7 @@ export class Parser extends EventEmitter implements Parser {
             },
         }, { decodeEntities: true });
 
-        this.inputStream.on('data', data => {
+        this.inputStream.on('data', (data) => {
             this.streamParser.write(data);
         });
         this.inputStream.once('end', () => {

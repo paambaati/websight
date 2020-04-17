@@ -50,7 +50,7 @@ export default class Crawler {
         visitedUrls.add(url); // Getting outbound URLs was successful, so add it to visited URLs.
         this.sitemap.addLink(url, links);
         logger.debug(`Found ${links.urls.size} URLs and ${links.assets.size} static assets in ${url}`);
-        links.urls.forEach(link => {
+        links.urls.forEach((link) => {
             if (!visitedUrls.has(link)) {
                 logger.debug('New URL found', link);
                 // Not await-ing this because we don't know when the recursion will complete.

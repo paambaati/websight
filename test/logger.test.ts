@@ -21,3 +21,23 @@ test('🌲 Logger — Constructor should default to log level \'info\' if LOG_LE
     t.equals(logger.level, 'info', 'Log level should fallback to default.');
     t.end();
 });
+
+test('🌲 Logger — Constructor should have logs enabled if set explicitly in options.', t => {
+    t.plan(1);
+    process.env.LOG_LEVEL = '';
+    const { logger } = new Logger('tests', {
+        enabled: true,
+    });
+    t.equals(logger.level, 'info', 'Log level should fallback to default.');
+    t.end();
+});
+
+test('🌲 Logger — Constructor should have log level set correctly if a non-default level is set explicitly in options.', t => {
+    t.plan(1);
+    process.env.LOG_LEVEL = '';
+    const { logger } = new Logger('tests', {
+        level: 'error',
+    });
+    t.equals(logger.level, 'error', 'Log level should be correctly set.');
+    t.end();
+});

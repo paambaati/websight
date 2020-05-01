@@ -39,7 +39,7 @@
     "pino": "6.2.0"
   },
   "devDependencies": {
-    "@types/got": "9.6.9",
+    "@types/got": "9.6.10",
     "@types/node": "13.9.8",
     "@types/pino": "6.0.0",
     "@types/tape": "4.2.34",

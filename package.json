@@ -56,7 +56,7 @@
     "nyc": "15.1.0",
     "pino-pretty": "4.0.0",
     "qs": "6.9.1",
-    "tape": "4.13.0",
+    "tape": "5.0.1",
     "test-console": "1.1.0",
     "to-readable-stream": "2.1.0",
     "ts-node": "9.0.0",

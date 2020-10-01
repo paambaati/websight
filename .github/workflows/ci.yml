@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         platform: [ ubuntu-latest, macOS-latest ]
-        node: [ '12', '10' ]
+        node: [ '14', '12' ]
     name: test/node ${{ matrix.node }}/${{ matrix.platform }}
     runs-on: ${{ matrix.platform }}
     steps:
@@ -44,7 +44,7 @@ jobs:
     - run: yarn build
     - uses: paambaati/codeclimate-action@v2.7.1
       env:
-        CC_TEST_REPORTER_ID: 945dfb58a832d233a3caeb84e3e6d3be212e8c7abcb48117fce63b9adcb43647
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       with:
         coverageCommand: yarn run coverage
         debug: true

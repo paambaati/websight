@@ -42,7 +42,7 @@
     "@types/got": "9.6.9",
     "@types/node": "13.9.8",
     "@types/pino": "6.0.0",
-    "@types/tape": "4.2.34",
+    "@types/tape": "4.13.0",
     "@types/test-console": "1.1.0",
     "@typescript-eslint/eslint-plugin": "2.34.0",
     "@typescript-eslint/parser": "2.34.0",

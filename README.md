@@ -8,7 +8,7 @@ A simple crawler that fetches all pages in a given website and prints the links 
 
 <small> 📣 Note that this project was purpose-built for a coding challenge (see [problem statement](PROBLEM-STATEMENT.md)) and is not meant for production use (unless you aren't [web scale](http://www.mongodb-is-web-scale.com/) yet).</small>
 
-### 🛠️ Setup
+### 🛠️ Setup:
 
 Before you run this app, make sure you have [Node.js](https://nodejs.org/en/) installed. [`yarn`](https://yarnpkg.com/lang/en/docs/install) is recommended, but can be used interchangeably with `npm`. If you'd prefer running everything inside a Docker container, see the [Docker setup](#docker-setup) section.
 
@@ -18,23 +18,23 @@ cd websight
 yarn install && yarn build
 ```
 
-#### 👩🏻‍💻 Usage
+#### 👩🏻‍💻 Usage:
 ```bash
 yarn start <website>
 ```
 
-#### 🧪 Tests & Coverage
+#### 🧪 Tests & Coverage:
 ```bash
 yarn run coverage
 ```
 
-### 🐳 Docker Setup
+### 🐳 Docker Setup:
 
 ```bash
 docker build -t websight .
 docker run -ti websight <website>
 ```
-### 📦 Executable Binary
+### 📦 Executable Binary:
 
 ```bash
 yarn bundle && yarn binary
@@ -42,7 +42,7 @@ yarn bundle && yarn binary
 
 This produces standalone executable binaries for both Linux and macOS.
 
-## 🧩 Design
+## 🧩 Design:
 
 ```
                                             +---------------------+                        
@@ -77,7 +77,7 @@ The `LinkExtractor` class is a thin orchestrating wrapper around 3 core componen
 
 <b id="f1"><sup>1</sup></b> `Crawler.crawl()` is an `async` function that _never resolves_ because it is technically impossible to detect when we've finished crawling. In most runtimes, we'd have to implement some kind of idle polling to detect completion; however, in Node.js, as soon as the event loop has no more tasks to execute, the main process will run to completion. This is why we finally print the sitemap in the [`Process.beforeExit`](https://nodejs.org/api/process.html#process_event_beforeexit) event. [↩](#a1)
 
-## 🏎 Optimizations
+## 🏎 Optimizations:
 
 1. Streams all the way down.
 
@@ -87,7 +87,7 @@ The `LinkExtractor` class is a thin orchestrating wrapper around 3 core componen
 
     The `Fetcher` class uses a global [`keepAlive`](https://nodejs.org/api/http.html#http_new_agent_options) agent to reuse sockets as we're only crawling a single domain. This helps avoid re-establishing TCP connections for each request.
 
-## ⚡️ Limitations
+## ⚡️ Limitations:
 
 When ramping up for scale, this design exposes a few of its limitations —
 

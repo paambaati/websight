@@ -33,7 +33,7 @@
     "darwin"
   ],
   "dependencies": {
-    "agentkeepalive": "4.1.0",
+    "agentkeepalive": "4.1.4",
     "got": "11.7.0",
     "htmlparser2": "4.1.0",
     "pino": "6.6.1"

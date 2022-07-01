@@ -36,7 +36,7 @@
     "agentkeepalive": "4.1.0",
     "got": "11.7.0",
     "htmlparser2": "4.1.0",
-    "pino": "6.6.1"
+    "pino": "8.1.0"
   },
   "devDependencies": {
     "@types/got": "9.6.11",

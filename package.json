@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "agentkeepalive": "4.1.0",
-    "got": "11.7.0",
+    "got": "12.5.1",
     "htmlparser2": "4.1.0",
     "pino": "6.6.1"
   },

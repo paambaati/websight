@@ -60,6 +60,6 @@
     "test-console": "1.1.0",
     "to-readable-stream": "2.1.0",
     "ts-node": "9.0.0",
-    "typescript": "3.8.3"
+    "typescript": "4.9.4"
   }
 }

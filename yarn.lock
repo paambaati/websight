@@ -237,10 +237,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/test-console@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@types/test-console/-/test-console-1.1.0.tgz#e8c083cbb30ac8270fc6c0ef389582bc31c970d5"
-  integrity sha512-Y+esQlsRqqfyIkCFwR7TXOT+wpM2z53iE1yNtv75HGODS/81nor5Dna7kdTQ6HZnos0LkRDlseJbF7ZWZn2hxQ==
+"@types/test-console@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/test-console/-/test-console-2.0.0.tgz#0721c644ebc6120d290f01abe6b0ab8e053b7dfe"
+  integrity sha512-gaNsdiJjASZcf8uGLplJlfxOavCk0RhiPTD+vuDaALmkEwrFQbi1PQZ3PmkL1roWn5cGJGDsFSliu1j8mKwq1Q==
 
 "@types/tough-cookie@*":
   version "2.3.6"
@@ -2550,10 +2550,10 @@ tar-stream@^2.0.0:
     inherits "^2.0.3"
     readable-stream "^3.1.1"
 
-test-console@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/test-console/-/test-console-1.1.0.tgz#34466d421f1b049e1be80d1734bdb5a512889c7f"
-  integrity sha512-pntCc+DnxNVZxNIul3NjThWaLvIrp9GNHRMrriyFWFtq10LpbHGsagu7riq7UIZn79f9aXnKI7YgyMvf8dcKsg==
+test-console@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/test-console/-/test-console-2.0.0.tgz#a279f7e2e148815224d8446ffa5208f0077d68fb"
+  integrity sha512-ciILzfCQCny8zy1+HEw2yBLKus7LNMsAHymsp2fhvGTVh5pWE5v2EB7V+5ag3WM9aO2ULtgsXVQePWYE+fb7pA==
 
 test-exclude@^6.0.0:
   version "6.0.0"
